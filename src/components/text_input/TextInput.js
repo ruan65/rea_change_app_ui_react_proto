@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Axios from 'axios'
 
 class TextInput extends Component {
 
@@ -19,7 +20,18 @@ class TextInput extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    alert( "Submitted text: " + this.state.text )
+    // alert( "Submitted text: " + this.state.text )
+
+    Axios.post( "http://localhost:8888/change/text", { "text": this.state.text, "from": "Batman" }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+      }
+    } )
+      .then( response => {
+        console.log( response.data )
+      } )
+      .catch( error => console.log( error ) )
   }
 
   render() {
@@ -28,7 +40,7 @@ class TextInput extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Title:
-          <input type='text' value={this.state.text} onChange={this.handleTextInput}/>
+          <input type='text' value={this.state.text} onChange={ev => this.handleTextInput(ev)}/>
         </label>
 
         <input type='submit' value='Submit'/>
