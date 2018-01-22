@@ -22,10 +22,9 @@ class TextInput extends Component {
     event.preventDefault()
     // alert( "Submitted text: " + this.state.text )
 
-    Axios.post( "http://localhost:8888/change/text", { "text": this.state.text, "from": "Batman" }, {
+    Axios.post( "http://localhost:8888/update/title", { "text": this.state.text, "from": "Batman" }, {
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+        'Content-Type': 'application/json'
       }
     } )
       .then( response => {
