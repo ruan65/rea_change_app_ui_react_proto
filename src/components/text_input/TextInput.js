@@ -5,24 +5,40 @@ class TextInput extends Component {
 
   state = {
     title: '',
-    text: ''
+    date: '',
+    from: 'Some user'
   }
 
-  handleTextInput = (event) => {
+  handleTitleInput = (event) => {
 
     this.setState( {
 
       ...this.state,
-      text: event.target.value
+      title: event.target.value
+
+    } )
+  }
+
+  handleDateInput = (event) => {
+
+    this.setState( {
+
+      ...this.state,
+      date: event.target.value
 
     } )
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    // alert( "Submitted text: " + this.state.text )
 
-    Axios.post( "http://localhost:8888/update/title", { "text": this.state.text, "from": "Batman" }, {
+    const payloadObj = {
+      "title": this.state.title,
+      "from": this.state.from,
+      "date": this.state.date
+    }
+
+    Axios.post( "http://localhost:8888/update/title", payloadObj, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -38,8 +54,13 @@ class TextInput extends Component {
     const textInputForm =
       <form onSubmit={this.handleSubmit}>
         <label>
-          Title:
-          <input type='text' value={this.state.text} onChange={ev => this.handleTextInput(ev)}/>
+          Название:
+          <input type='text' value={this.state.text} onChange={ev => this.handleTitleInput(ev)}/>
+        </label>
+
+        <label>
+          Дата:
+          <input type='text' value={this.state.text} onChange={ev => this.handleDateInput(ev)}/>
         </label>
 
         <input type='submit' value='Submit'/>
