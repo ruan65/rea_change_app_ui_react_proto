@@ -4,9 +4,20 @@ import Axios from 'axios'
 class TextInput extends Component {
 
   state = {
+    event: '',
     title: '',
     date: '',
     from: 'Some user'
+  }
+
+  handleEventInput = (event) => {
+
+    this.setState( {
+
+      ...this.state,
+      event: event.target.value
+
+    } )
   }
 
   handleTitleInput = (event) => {
@@ -33,12 +44,13 @@ class TextInput extends Component {
     event.preventDefault()
 
     const payloadObj = {
+      event: this.state.event,
       "title": this.state.title,
       "from": this.state.from,
       "date": this.state.date
     }
 
-    Axios.post( "http://localhost:8888/update/title", payloadObj, {
+    Axios.post( "http://localhost:8888/update/login", payloadObj, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -53,6 +65,12 @@ class TextInput extends Component {
 
     const textInputForm =
       <form onSubmit={this.handleSubmit}>
+
+        <label>
+          Событие:
+          <input type='text' value={this.state.text} onChange={ev => this.handleEventInput(ev)}/>
+        </label>
+
         <label>
           Название:
           <input type='text' value={this.state.text} onChange={ev => this.handleTitleInput(ev)}/>
