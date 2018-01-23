@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-class TextInput extends Component {
+class LoginScreenComponent extends Component {
 
   state = {
     event: '',
@@ -92,4 +92,4 @@ class TextInput extends Component {
   }
 }
 
-export default TextInput
+export default LoginScreenComponent
