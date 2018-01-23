@@ -10,32 +10,12 @@ class LoginScreenComponent extends Component {
     from: 'Some user'
   }
 
-  handleEventInput = (event) => {
+  handleInput = (event, inputElementKey) => {
 
     this.setState( {
 
       ...this.state,
-      event: event.target.value
-
-    } )
-  }
-
-  handleTitleInput = (event) => {
-
-    this.setState( {
-
-      ...this.state,
-      title: event.target.value
-
-    } )
-  }
-
-  handleDateInput = (event) => {
-
-    this.setState( {
-
-      ...this.state,
-      date: event.target.value
+      [inputElementKey]: event.target.value
 
     } )
   }
@@ -56,29 +36,38 @@ class LoginScreenComponent extends Component {
       }
     } )
       .then( response => {
-        console.log( response.data )
+        console.log( response )
+
+        if (response.status === 200) {
+          this.props.history.push('/adjust/schedule')
+        } else {
+          alert('Что то пошло не так. Помолимся и еще раз?')
+        }
       } )
-      .catch( error => console.log( error ) )
+      .catch( error =>   {
+        console.log( error )
+        alert('Что то пошло не так. Сервер мертв? Пнём админа и еще раз?')
+      } )
   }
 
   render() {
 
-    const textInputForm =
+    const loginPageInputForm =
       <form onSubmit={this.handleSubmit}>
 
         <label>
           Событие:
-          <input type='text' value={this.state.text} onChange={ev => this.handleEventInput(ev)}/>
+          <input type='text' value={this.state.text} onChange={ev => this.handleInput(ev, 'event')}/>
         </label>
 
         <label>
           Название:
-          <input type='text' value={this.state.text} onChange={ev => this.handleTitleInput(ev)}/>
+          <input type='text' value={this.state.text} onChange={ev => this.handleInput(ev, 'title')}/>
         </label>
 
         <label>
           Дата:
-          <input type='text' value={this.state.text} onChange={ev => this.handleDateInput(ev)}/>
+          <input type='text' value={this.state.text} onChange={ev => this.handleInput(ev, 'date')}/>
         </label>
 
         <input type='submit' value='Submit'/>
@@ -86,7 +75,8 @@ class LoginScreenComponent extends Component {
 
     return (
       <div>
-        {textInputForm}
+        <h3>Мобильное приложение: Страница авторизации</h3>
+        {loginPageInputForm}
       </div>
     )
   }

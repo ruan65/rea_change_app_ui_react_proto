@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom'
 import './App.css';
-import LoginScreenComponent from './components/login_screen/LognScreenComponent'
+import LoginScreenComponent from './components/login_screen/LoginScreenComponent'
 import ScheduleScreenComponent from './components/schedule_screen/ScheduleScreenComponent'
 
 class App extends Component {
