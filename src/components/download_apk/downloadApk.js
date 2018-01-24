@@ -1,25 +1,14 @@
 import React from 'react'
-import Axios from 'axios'
+import { urls } from '../../cv'
 
+const download = () => {
 
-const download = (props) => {
-
-  window.open('http://localhost:8888/download/apk', '_blank')
-
-  // Axios.get( 'http://localhost:8888/download/apk' )
-  //   .then( response => {
-  //
-  //     alert('download response: ' + response.status)
-  //   } )
-  //   .catch( err => console.log( err ) )
-
-  // alert('downloading!!!!!!!!!!!!!!!!!!!!')
+  window.open( urls.downloadApk, '_blank' )
 }
 
-
-const downloadAppApk = (props) => (
+const downloadAppApk = () => (
   <div>
-    <button onClick={() => download( props )}>СКАЧАТЬ УСТАНОВОЧНЫЙ ФАЙЛ</button>
+    <button onClick={download}>СКАЧАТЬ УСТАНОВОЧНЫЙ ФАЙЛ</button>
   </div>
 )
 
