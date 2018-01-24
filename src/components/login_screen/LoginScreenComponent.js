@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
+import './LoginScreenComponent.css'
 
 class LoginScreenComponent extends Component {
 
@@ -50,32 +51,34 @@ class LoginScreenComponent extends Component {
       } )
   }
 
+  titleStyle = {
+    marginBottom: '50px',
+    color: ' #006AA4'
+  }
+
   render() {
+
+    const inputStyle = 'InputElement'
 
     const loginPageInputForm =
       <form onSubmit={this.handleSubmit}>
 
-        <label>
-          Событие:
-          <input type='text' value={this.state.text} onChange={ev => this.handleInput(ev, 'event')}/>
-        </label>
+          <input className={inputStyle} type='text' value={this.state.text}
+                 placeholder='Событие' onChange={ev => this.handleInput(ev, 'event')}/>
 
-        <label>
-          Название:
-          <input type='text' value={this.state.text} onChange={ev => this.handleInput(ev, 'title')}/>
-        </label>
+          <input className={inputStyle} type='text' value={this.state.text}
+                 placeholder='Название' onChange={ev => this.handleInput(ev, 'title')}/>
 
-        <label>
-          Дата:
-          <input type='text' value={this.state.text} onChange={ev => this.handleInput(ev, 'date')}/>
-        </label>
+          <input className={inputStyle} type='text' value={this.state.text}
+                 placeholder='Дата' onChange={ev => this.handleInput(ev, 'date')}/>
 
-        <input type='submit' value='Submit'/>
+
+        <input className='button' type='submit' value='ДАЛЕЕ'/>
       </form>
 
     return (
-      <div>
-        <h3>Мобильное приложение: Страница авторизации</h3>
+      <div className='LoginScreen'>
+        <h3 style={this.titleStyle}>Настройка страницы авторизации</h3>
         {loginPageInputForm}
       </div>
     )
