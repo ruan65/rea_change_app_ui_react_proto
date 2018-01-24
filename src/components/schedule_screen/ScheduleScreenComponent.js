@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Axios from "axios/index";
+import Axios from 'axios'
 
 class ScheduleScreenComponent extends Component {
 
@@ -33,9 +33,9 @@ class ScheduleScreenComponent extends Component {
         console.log( response )
 
         if (response.status === 200) {
-          this.props.history.push('/adjust/schedule')
+          this.props.history.push('/download/apk')
         } else {
-          alert('Что то пошло не так. Помолимся и еще раз?')
+          alert('Что то пошло не так: "' + response.status + '" Помолимся и еще раз?')
         }
       } )
       .catch( error =>   {
