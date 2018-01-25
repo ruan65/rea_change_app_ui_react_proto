@@ -5,5 +5,6 @@ const port = ':8888'
 const mainBackendUrl = netProtocol + host + port
 
 export const urls = {
-  downloadApk: mainBackendUrl + '/download/apk'
+  downloadApk: mainBackendUrl + '/download/apk',
+  assembleApk: mainBackendUrl + '/assemble/apk'
 }

@@ -4,6 +4,7 @@ import './App.css';
 import LoginScreenComponent from './components/login_screen/LoginScreenComponent'
 import ScheduleScreenComponent from './components/schedule_screen/ScheduleScreenComponent'
 import DownloadAppApkComponent from './components/download_apk/downloadApk'
+import AssembleAppApkComponent from './components/assemble_apk/assembleApkComponent'
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <Switch>
           <Route path='/adjust/login' component={LoginScreenComponent}/>
           <Route path='/adjust/schedule' component={ScheduleScreenComponent}/>
+          <Route path='/assemble/apk' component={AssembleAppApkComponent}/>
           <Route path='/download/apk' component={DownloadAppApkComponent}/>
           <Route path='/' component={LoginScreenComponent}/>
         </Switch>

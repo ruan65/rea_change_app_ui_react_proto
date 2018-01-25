@@ -36,7 +36,7 @@ class ScheduleScreenComponent extends Component {
         console.log( response )
 
         if (response.status === 200) {
-          this.props.history.push('/download/apk')
+          this.props.history.push('/assemble/apk')
         } else {
           alert('Что то пошло не так: "' + response.status + '" Помолимся и еще раз?')
         }
