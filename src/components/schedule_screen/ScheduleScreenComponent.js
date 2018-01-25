@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 import '../login_screen/LoginScreenComponent.css'
 
-const inputStyle = 'InputElement'
-
 class ScheduleScreenComponent extends Component {
 
   state = {
@@ -52,7 +50,7 @@ class ScheduleScreenComponent extends Component {
       <form onSubmit={this.handleSubmit}>
 
           <textarea
-            className={this.inputStyle} rows="40" cols="50" value={this.state.text}
+            className='InputElement' rows='30' cols='50' value={this.state.text}
             onChange={ev => this.handleInput(ev, 'schedule')}
             placeholder='...скопируйте в это окно расписание мероприятия'
           />

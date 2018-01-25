@@ -1,28 +1,48 @@
-import React from 'react'
+import React, { Component } from 'react'
 import assembleIcon from './assemble_icon.png'
 import { urls } from '../../cv'
 import Axios from 'axios'
+import Spinner from '../ui/Spinner'
 
-const assemble = (props) => {
+class AssembleApkComponent extends Component {
 
-  console.log( 'assemble clicked.....' )
+  state = {
+    assembling: false
+  }
 
-  Axios.get( urls.assembleApk )
-    .then( response => {
+  assemble = () => {
 
-      console.log( response.data )
-      props.history.push( '/download/apk' )
+    this.setState({assembling: true})
 
-    } )
-    .catch( err => console.log( err ) )
+    Axios.get( urls.assembleApk )
+      .then( response => {
+
+        setTimeout(() => {
+          this.setState({assembling: false})
+          console.log( response.data )
+          this.props.history.push( '/download/apk' )
+        }, 4000)
+      } )
+      .catch( err => {
+        this.setState({assembling: false})
+        console.log( err )
+      } )
+  }
+
+  render() {
+
+    const content = this.state.assembling
+      ? <div>
+        <h3 className='TitleStyle'>Идет сборка приложения...</h3>
+        <Spinner/>
+      </div>
+      : <div className='LoginScreen'>
+        <img src={assembleIcon} width="200" height="200" alt=""/>
+        <br/><br/><br/>
+        <button className='button' onClick={this.assemble}>СБОРКА ПРИЛОЖЕНИЯ</button>
+      </div>
+    return content
+  }
 }
 
-const assembleApkComponent = (props) => (
-  <div className='LoginScreen'>
-    <img src={assembleIcon} width="200" height="200"/>
-    <br/><br/><br/>
-    <button className='button' onClick={() => assemble( props )}>СБОРКА ПРИЛОЖЕНИЯ</button>
-  </div>
-)
-
-export default assembleApkComponent
+export default AssembleApkComponent
