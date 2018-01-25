@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
+import '../login_screen/LoginScreenComponent.css'
+
+const inputStyle = 'InputElement'
 
 class ScheduleScreenComponent extends Component {
 
@@ -48,17 +51,18 @@ class ScheduleScreenComponent extends Component {
     const loginPageInputForm =
       <form onSubmit={this.handleSubmit}>
 
-        <label>
-          Расписание мероприятия:
-          <textarea rows="4" cols="50" value={this.state.text} onChange={ev => this.handleInput(ev, 'schedule')}/>
-        </label>
+          <textarea
+            className={this.inputStyle} rows="40" cols="50" value={this.state.text}
+            onChange={ev => this.handleInput(ev, 'schedule')}
+            placeholder='...скопируйте в это окно расписание мероприятия'
+          />
 
-        <input type='submit' value='Submit'/>
+        <input className='button' type='submit' value='Submit'/>
       </form>
 
     return (
-      <div>
-        <h3>Мобильное приложение: Расписание мероприятия</h3>
+      <div className='LoginScreen'>
+        <h3 className='TitleStyle'>Расписание мероприятия</h3>
         {loginPageInputForm}
       </div>
     )

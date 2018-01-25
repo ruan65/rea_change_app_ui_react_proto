@@ -1,5 +1,6 @@
 import React from 'react'
 import { urls } from '../../cv'
+import downloadIcon from './Download-Computer-512.png'
 
 const download = () => {
 
@@ -7,8 +8,10 @@ const download = () => {
 }
 
 const downloadAppApk = () => (
-  <div>
-    <button onClick={download}>СКАЧАТЬ УСТАНОВОЧНЫЙ ФАЙЛ</button>
+  <div className='LoginScreen'>
+    <img src={downloadIcon} width="200" height="200"/>
+    <br/><br/><br/>
+    <button className='button' onClick={download}>СКАЧАТЬ УСТАНОВОЧНЫЙ ФАЙЛ</button>
   </div>
 )
 

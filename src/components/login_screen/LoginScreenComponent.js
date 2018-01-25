@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 import './LoginScreenComponent.css'
 
+const inputStyle = 'InputElement'
+
 class LoginScreenComponent extends Component {
 
   state = {
@@ -51,14 +53,9 @@ class LoginScreenComponent extends Component {
       } )
   }
 
-  titleStyle = {
-    marginBottom: '50px',
-    color: ' #006AA4'
-  }
+
 
   render() {
-
-    const inputStyle = 'InputElement'
 
     const loginPageInputForm =
       <form onSubmit={this.handleSubmit}>
@@ -78,7 +75,7 @@ class LoginScreenComponent extends Component {
 
     return (
       <div className='LoginScreen'>
-        <h3 style={this.titleStyle}>Настройка страницы авторизации</h3>
+        <h3 className='TitleStyle'>Настройка страницы авторизации</h3>
         {loginPageInputForm}
       </div>
     )
